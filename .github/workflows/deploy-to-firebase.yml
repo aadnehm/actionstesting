@@ -1,0 +1,168 @@
+name: Deploy to firebase
+
+on:
+  workflow_dispatch:
+    
+  push:
+    branches:
+      - "main"
+
+permissions:
+  contents: 'read'
+  id-token: 'write'
+
+jobs:
+
+  build-and-test:
+    name: Build and run tests
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-name: ${{ steps.vars.outputs.timestamp }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cache npm cache
+        run: sleep 1s
+        shell: bash
+
+      - name: Install dependencies
+        run: sleep 10s
+        shell: bash
+
+      - name: Generate unique artifact name and set as output
+        run: sleep 0s
+        shell: bash
+
+      - name: Build
+        run: sleep 10s
+        shell: bash
+
+      - name: Archive production artifacts
+        run: sleep 0s
+        shell: bash
+
+      - name: Run tests
+        run: sleep 13s
+        shell: bash
+
+  deploy-dev:
+    name: Deploy to dev
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download artifact
+        run: sleep 0s
+        shell: bash
+
+      - name: Unzip artifact
+        run: sleep 0s
+        shell: bash
+
+      - name: List working directory
+        run: sleep 0s
+        shell: bash
+
+      - name: Install dependencies
+        run: sleep 10s
+        shell: bash
+
+      - id: 'auth'
+        run: sleep 0s
+        shell: bash
+
+      - name: 'Set up Cloud SDK'
+        run: sleep 18s
+        shell: bash
+
+      - name: Install Firebase CLI
+        run: sleep 16s
+        shell: bash
+
+      - name: Deploy to Firebase
+        run: sleep 109s
+        shell: bash
+
+  deploy-staging:
+    name: Deploy to staging
+    runs-on: ubuntu-latest
+    needs: deploy-dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download artifact
+        run: sleep 180s
+        shell: bash
+
+      - name: Unzip artifact
+        run: sleep 180s
+        shell: bash
+
+      - name: List working directory
+        run: sleep 180s
+        shell: bash
+
+      - name: Install dependencies
+        run: sleep 180s
+        shell: bash
+
+      - id: 'auth'
+        run: sleep 180s
+        shell: bash
+
+      - name: 'Set up Cloud SDK'
+        run: sleep 180s
+        shell: bash
+
+      - name: Install Firebase CLI
+        run: sleep 180s
+        shell: bash
+
+      - name: Deploy to Firebase
+        run: sleep 180s
+        shell: bash
+
+  deploy-prod:
+    name: Deploy to prod
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download artifact
+        run: sleep 180s
+        shell: bash
+
+      - name: Unzip artifact
+        run: sleep 180s
+        shell: bash
+
+      - name: List working directory
+        run: sleep 180s
+        shell: bash
+
+      - name: Install dependencies
+        run: sleep 180s
+        shell: bash
+
+      - id: 'auth'
+        run: sleep 180s
+        shell: bash
+
+      - name: 'Set up Cloud SDK'
+        run: sleep 180s
+        shell: bash
+
+      - name: Install Firebase CLI
+        run: sleep 180s
+        shell: bash
+
+      - name: Deploy to Firebase
+        run: sleep 180s
+        shell: bash
